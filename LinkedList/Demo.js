@@ -86,6 +86,25 @@ class LinkedList {
     return temp;
   }
 
+  get(index) {
+    if (index < 0 || index >= this.length) return undefined;
+
+    let temp = this.head;
+    for (let i = 0; i < index; i++) {
+      temp = temp.next;
+    }
+    return temp;
+  }
+
+  set(index, value) {
+    let temp = this.get(index);
+    if (temp) {
+      temp.value = value;
+      return true;
+    }
+    return false;
+  }
+
   //Creates a new Node & inserts it
   insert(value) {}
 }
@@ -108,4 +127,13 @@ console.log(myLinkedList);
 
 myLinkedList.shift();
 
+console.log(myLinkedList);
+
+console.log("Get invalid Node:");
+console.log(myLinkedList.get(-1));
+console.log(myLinkedList.get(999));
+console.log("Get Node 0:");
+console.log(myLinkedList.get(0));
+
+myLinkedList.set(0, 1);
 console.log(myLinkedList);
