@@ -134,6 +134,25 @@ class LinkedList {
     this.length--;
     return temp;
   }
+
+  reverse() {
+    //Reverse Head & Tail
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+
+    let next = temp.next;
+    let prev = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+    }
+
+    return this;
+  }
 }
 
 let myLinkedList = new LinkedList(7);
@@ -165,6 +184,15 @@ console.log(myLinkedList.get(0));
 myLinkedList.set(0, 1);
 console.log(myLinkedList);
 
+console.log(myLinkedList.get(1));
 myLinkedList.insert(1, 10);
 console.log(myLinkedList);
 console.log(myLinkedList.get(1));
+
+myLinkedList.remove(1);
+console.log(myLinkedList);
+console.log(myLinkedList.get(1));
+
+myLinkedList.reverse();
+console.log("Reversed:");
+console.log(myLinkedList);
