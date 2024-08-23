@@ -34,7 +34,7 @@ class LinkedList {
   }
   insert(value) {
     //Creates a new Node & inserts it
-  }
+  } 
 }
 
 let myLinkedList = new LinkedList(7);
