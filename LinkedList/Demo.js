@@ -14,8 +14,9 @@ class LinkedList {
     this.tail = this.head;
     this.length = 1;
   }
+
+  //Creates a new Node & adds it to the end
   push(value) {
-    //Creates a new Node & adds it to the end
     const newNode = new Node(value);
 
     //If there's no nodes in the LL, Head and Tail will point to the new Node
@@ -29,12 +30,14 @@ class LinkedList {
     this.length++;
     return this;
   }
-  unshit(value) {
-    //Creates a new Node & adds it to the start
-  }
-  insert(value) {
-    //Creates a new Node & inserts it
-  } 
+
+  pop() {}
+
+  //Creates a new Node & adds it to the start
+  unshit(value) {}
+
+  //Creates a new Node & inserts it
+  insert(value) {}
 }
 
 let myLinkedList = new LinkedList(7);
