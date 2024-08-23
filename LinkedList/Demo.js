@@ -55,7 +55,19 @@ class LinkedList {
   }
 
   //Creates a new Node & adds it to the start
-  unshit(value) {}
+  unshift(value) {
+    const newNode = new Node(value);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 
   //Creates a new Node & inserts it
   insert(value) {}
@@ -70,5 +82,9 @@ console.log(myLinkedList);
 
 console.log(myLinkedList.pop());
 console.log(myLinkedList.pop());
+
+console.log(myLinkedList);
+
+myLinkedList.unshift(2);
 
 console.log(myLinkedList);
