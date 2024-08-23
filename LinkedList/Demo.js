@@ -69,6 +69,23 @@ class LinkedList {
     return this;
   }
 
+  //Removes the first Node
+  shift() {
+    if (!this.head) return undefined;
+
+    let temp = this.head;
+    this.head = this.head.next;
+    temp.next = null;
+
+    this.length--;
+    if (this.length === 0) {
+      //If this case, Head is already set to null
+      this.tail = null;
+    }
+
+    return temp;
+  }
+
   //Creates a new Node & inserts it
   insert(value) {}
 }
@@ -86,5 +103,9 @@ console.log(myLinkedList.pop());
 console.log(myLinkedList);
 
 myLinkedList.unshift(2);
+
+console.log(myLinkedList);
+
+myLinkedList.shift();
 
 console.log(myLinkedList);
