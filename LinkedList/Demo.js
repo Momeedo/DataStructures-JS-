@@ -31,7 +31,28 @@ class LinkedList {
     return this;
   }
 
-  pop() {}
+  pop() {
+    if (!this.head) return undefined; //LL is empty
+
+    let temp = this.head;
+    let pre = this.head;
+
+    //The while loop won't execute if the LL has only one Node
+    while (temp.next) {
+      pre = temp;
+      temp = temp.next;
+    }
+    this.tail = pre;
+    this.tail.next = null;
+    this.length--;
+
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return temp;
+  }
 
   //Creates a new Node & adds it to the start
   unshit(value) {}
@@ -42,6 +63,12 @@ class LinkedList {
 
 let myLinkedList = new LinkedList(7);
 myLinkedList.push(4);
+myLinkedList.push(6);
+myLinkedList.push(8);
 
-console.log("Output:");
+console.log(myLinkedList);
+
+console.log(myLinkedList.pop());
+console.log(myLinkedList.pop());
+
 console.log(myLinkedList);
