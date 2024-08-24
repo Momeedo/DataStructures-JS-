@@ -53,7 +53,7 @@ class LinkedList {
     }
   }
 
-  //Tortoise and hare algorithm
+  //Tortoise and hare algorithm aka Floyd’s Cycle Finding algorithm
   findMiddleNode() {
     let slow = this.head;
     let fast = this.head;
