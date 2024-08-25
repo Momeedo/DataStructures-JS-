@@ -124,6 +124,23 @@ class DoublyLinkedList {
 
     return true;
   }
+
+  remove(index) {
+    if (index === 0) return this.shift();
+    if (index === this.length) return this.pop();
+    if (index < 0 || index >= this.length) return false;
+
+    let temp = this.get(index);
+
+    temp.prev.next = temp.next;
+    temp.next.prev = temp.prev;
+    temp.prev = null;
+    temp.next = null;
+
+    this.length--;
+
+    return temp;
+  }
 }
 
 let myDoublyLinkedList = new DoublyLinkedList(1);
@@ -163,4 +180,3 @@ myDoublyLinkedList.insert(3, 3);
 console.log(myDoublyLinkedList);
 console.log("Get Node 3:");
 console.log(myDoublyLinkedList.get(3));
-
