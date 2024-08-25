@@ -64,16 +64,16 @@ class LinkedList {
     let num = 0;
     let current = this.head;
 
-    for (let i = this.length - 1; i >= 0; i--) {
-      num += current.value * (2 ** i);
+    // Alternative Method if Length is available
+    // for (let i = this.length - 1; i >= 0; i--) {
+    //   num += current.value * (2 ** i);
+    //   current = current.next;
+    // }
+
+    while (current !== null) {
+      num = num * 2 + current.value;
       current = current.next;
     }
-
-    // Common Method if Length not available
-    // while (current !== null) {
-    //     num= num * 2 + current.value
-    //     current = current.next
-    // }
 
     return num;
   }
