@@ -82,7 +82,6 @@ class DoublyLinkedList {
 
   get(index) {
     if (index < 0 || index >= this.length) return undefined;
-
     let temp = this.head;
     if (index < this.length / 2) {
       for (let i = 0; i < index; i++) {
@@ -95,6 +94,15 @@ class DoublyLinkedList {
       }
     }
     return temp;
+  }
+
+  set(index, value) {
+    let temp = this.get(index);
+    if (temp) {
+      temp.value = value;
+      return true;
+    }
+    return false;
   }
 }
 
@@ -121,3 +129,9 @@ console.log("----------------\n\n");
 
 myDoublyLinkedList.shift();
 console.log(myDoublyLinkedList);
+
+console.log("\n\n----------------");
+console.log("----------------\n\n");
+
+console.log("Get Node 2:");
+console.log(myDoublyLinkedList.get(2));
