@@ -104,12 +104,32 @@ class DoublyLinkedList {
     }
     return false;
   }
+
+  insert(index, value) {
+    if (index === 0) return this.unshift(value);
+    if (index === this.length) return this.push(value);
+    if (index < 0 || index >= this.length) return false;
+
+    const newNode = new Node(value);
+
+    let prev = this.get(index - 1);
+    let next = prev.next;
+
+    prev.next = newNode;
+    newNode.prev = prev;
+    newNode.next = next;
+    next.prev = newNode;
+
+    this.length++;
+
+    return true;
+  }
 }
 
 let myDoublyLinkedList = new DoublyLinkedList(1);
 myDoublyLinkedList.push(2);
-myDoublyLinkedList.push(3);
 myDoublyLinkedList.push(4);
+myDoublyLinkedList.push(5);
 console.log(myDoublyLinkedList);
 
 console.log("\n\n----------------");
@@ -135,3 +155,12 @@ console.log("----------------\n\n");
 
 console.log("Get Node 2:");
 console.log(myDoublyLinkedList.get(2));
+
+console.log("\n\n----------------");
+console.log("----------------\n\n");
+
+myDoublyLinkedList.insert(3, 3);
+console.log(myDoublyLinkedList);
+console.log("Get Node 3:");
+console.log(myDoublyLinkedList.get(3));
+
