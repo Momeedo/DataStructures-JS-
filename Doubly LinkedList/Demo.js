@@ -19,7 +19,6 @@ class DoublyLinkedList {
   push(value) {
     const newNode = new Node(value);
 
-    //If there's no nodes in the LL, Head and Tail will point to the new Node
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
@@ -31,7 +30,33 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
+  pop() {
+    if (this.length === 0) return undefined;
+    let temp = this.tail;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.tail = this.tail.prev;
+
+      this.tail.next = null;
+      temp.prev = null;
+    }
+    this.length--;
+
+    return temp;
+  }
 }
 
 let myDoublyLinkedList = new DoublyLinkedList(1);
+myDoublyLinkedList.push(2);
+myDoublyLinkedList.push(3);
+myDoublyLinkedList.push(4);
+console.log(myDoublyLinkedList);
+
+console.log("\n\n----------------");
+console.log("----------------\n\n");
+
+myDoublyLinkedList.pop();
 console.log(myDoublyLinkedList);
