@@ -1,7 +1,8 @@
 function firstNonRepeatingChar(string) {
   const charCounts = new Map();
 
-  for (let char in string) {
+  for (let i = 0; i < string.length; i++) {
+    const char = string.charAt(i);
     charCounts.set(char, (charCounts.get(char) || 0) + 1);
   }
 
