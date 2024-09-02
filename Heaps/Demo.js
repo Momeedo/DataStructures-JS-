@@ -42,6 +42,8 @@ class Heap {
       if (maxIndex !== index) {
         this.#swap(index, maxIndex);
         index = maxIndex;
+      } else {
+        return;
       }
     }
   }
