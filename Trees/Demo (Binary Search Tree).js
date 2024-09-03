@@ -56,12 +56,28 @@ class BST {
   rContains(value, currentNode = this.root) {
     if (currentNode === null) return false;
     if (value === currentNode.value) return true;
-  
+
     if (value < currentNode.value) {
       return this.rContains(value, currentNode.left);
     } else {
       return this.rContains(value, currentNode.right);
     }
+  }
+
+  #rInsert(value, currentNode = this.root) {
+    if (currentNode === null) return new Node(value);
+
+    if (value < currentNode.value) {
+      currentNode.left = this.#rInsert(value, currentNode.left);
+    } else if (value > currentNode.value) {
+      currentNode.right = this.#rInsert(value, currentNode.right);
+    }
+
+    return currentNode;
+  }
+  rInsert(value) {
+    if (this.root === null) this.root = new Node(value);
+    this.#rInsert(value);
   }
 }
 
@@ -82,13 +98,13 @@ console.log(myTree);
 console.log("\n\n----------------");
 console.log("----------------\n\n");
 
-console.log("My Tree contains 21: " + myTree.contains(21))
-console.log("My Tree contains 20: " + myTree.contains(20))
+console.log("My Tree contains 21: " + myTree.contains(21));
+console.log("My Tree contains 20: " + myTree.contains(20));
 
 console.log("\n\n----------------");
 console.log("----------------\n\n");
 
-console.log("My Tree contains (Using Recursive) 82: " + myTree.rContains(82))
+console.log("My Tree contains (Using Recursive) 82: " + myTree.rContains(82));
 
 console.log("\n\n----------------");
 console.log("----------------\n\n");
