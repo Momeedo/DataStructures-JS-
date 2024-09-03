@@ -117,12 +117,64 @@ class BST {
     this.root = this.#deleteNode(value, this.root);
   }
 
-  //Get the min Value of a Tree/Sub-Tree where currentNode is the Root
+  //Get the min Value of a Tree/Sub-Tree where currentNode is the Root (Helper)
   minValue(currentNode) {
     while (currentNode.left != null) {
       currentNode = currentNode.left;
     }
     return currentNode.value;
+  }
+
+  //Breadth First Search
+  BFS() {
+    let currentNode = this.root;
+    let results = [];
+    let queue = [];
+    queue.push(currentNode);
+
+    while (queue.length) {
+      currentNode = queue.shift();
+      results.push(currentNode.value);
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+    }
+    return results;
+  }
+
+  //Depth First Search (PreOrder: Begin at the Top and start with the Left, StackCall start with Root)
+  DFSPreOrder() {
+    let results = [];
+    function traverse(currentNode) {
+      results.push(currentNode.value);
+      if (currentNode.left) traverse(currentNode.left);
+      if (currentNode.right) traverse(currentNode.right);
+    }
+    traverse(this.root);
+    return results;
+  }
+
+  //Depth First Search (PostOrder: Begin at the Top and start with the Left, StackCall start with Leaf and same level nodes)
+  DFSPostOrder() {
+    let results = [];
+    function traverse(currentNode) {
+      if (currentNode.left) traverse(currentNode.left);
+      if (currentNode.right) traverse(currentNode.right);
+      results.push(currentNode.value);
+    }
+    traverse(this.root);
+    return results;
+  }
+
+  //Depth First Search (InOrder: Begin at the Top and start with the Left, StackCall start with Leaf then go the parent Node)
+  DFSInOrder() {
+    let results = [];
+    function traverse(currentNode) {
+      if (currentNode.left) traverse(currentNode.left);
+      results.push(currentNode.value);
+      if (currentNode.right) traverse(currentNode.right);
+    }
+    traverse(this.root);
+    return results;
   }
 }
 
