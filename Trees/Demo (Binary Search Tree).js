@@ -53,6 +53,8 @@ class BST {
     return false;
   }
 
+  //Recursive
+  
   rContains(value, currentNode = this.root) {
     if (currentNode === null) return false;
     if (value === currentNode.value) return true;
