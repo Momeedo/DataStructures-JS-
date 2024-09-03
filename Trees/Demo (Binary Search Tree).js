@@ -52,6 +52,17 @@ class BST {
     }
     return false;
   }
+
+  rContains(value, currentNode = this.root) {
+    if (currentNode === null) return false;
+    if (value === currentNode.value) return true;
+  
+    if (value < currentNode.value) {
+      return this.rContains(value, currentNode.left);
+    } else {
+      return this.rContains(value, currentNode.right);
+    }
+  }
 }
 
 let myTree = new BST(1);
@@ -73,6 +84,11 @@ console.log("----------------\n\n");
 
 console.log("My Tree contains 21: " + myTree.contains(21))
 console.log("My Tree contains 20: " + myTree.contains(20))
+
+console.log("\n\n----------------");
+console.log("----------------\n\n");
+
+console.log("My Tree contains (Using Recursive) 82: " + myTree.rContains(82))
 
 console.log("\n\n----------------");
 console.log("----------------\n\n");
